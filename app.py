@@ -334,3 +334,4 @@ elif page == "Business Insights":
             "Recommendations are simple rule-based suggestions derived "
             "from recorded sales, not predictions from an AI model."
         )
+
