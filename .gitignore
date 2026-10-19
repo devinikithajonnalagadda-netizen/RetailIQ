@@ -1,5 +1,4 @@
 .venv/
-ca.pem
 echo
 .env
 __pycache__/
