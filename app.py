@@ -1,4 +1,5 @@
 import os
+import ssl
 from datetime import date
 
 import mysql.connector
