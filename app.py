@@ -39,7 +39,6 @@ def get_connection():
         ssl_verify_cert=True,
         ssl_verify_identity=True,
     )
-    )
 
 
 def run_query(query, params=None, fetch=False):
