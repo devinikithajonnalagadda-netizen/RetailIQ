@@ -37,7 +37,7 @@ def get_connection():
         host=get_setting("MYSQL_HOST", "localhost"),
         port=int(get_setting("MYSQL_PORT", "3306")),
         user=get_setting("MYSQL_USER", "root"),
-        password=get_setting("MYSQL_PASSWORD", ""),
+        password=get_setting("Devinikitha@2", ""),
         database=get_setting("MYSQL_DATABASE", "retailiq_db"),
         ssl_ca=os.path.join(os.path.dirname(__file__), "ca.pem"),
         ssl_verify_cert=True,
