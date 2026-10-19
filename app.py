@@ -35,14 +35,15 @@ def get_setting(name, default=None):
 def get_connection():
     return mysql.connector.connect(
         host=get_setting("MYSQL_HOST", "localhost"),
-        port=int(get_setting("MYSQL_PORT", "4000")),  # 👈 TiDB uses 4000 instead of 3306
+        port=int(get_setting("MYSQL_PORT", "4000")),
         user=get_setting("MYSQL_USER", "root"),
-        password=get_setting("MYSQL_PASSWORD", ""),  # 👈 Leverages your environment variable/secret
+        password=get_setting("MYSQL_PASSWORD", ""), 
         database=get_setting("MYSQL_DATABASE", "retailiq_db"),
-        ssl_verify_cert=True,                        # 👈 Re-enable SSL for secure Cloud connection
-        ssl_verify_identity=True,                    # 👈 Re-enable identity checks for the cloud
+        ssl_verify_cert=False,       # 👈 Update this to False
+        ssl_verify_identity=False,   # 👈 Update this to False
         connection_timeout=15,
     )
+
 
 def run_query(query, params=None, fetch=False):
     connection = get_connection()
