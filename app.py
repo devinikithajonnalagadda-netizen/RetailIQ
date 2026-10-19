@@ -1,9 +1,13 @@
-
 import os
 from datetime import date
+
+import mysql.connector
+import pandas as pd
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
+
 
 import mysql.connector
 import pandas as pd
@@ -21,7 +25,6 @@ st.caption(
     "Track sales, understand profitability, and make better business decisions."
 )
 
-
 def get_setting(name, default=None):
     try:
         return st.secrets[name]
@@ -36,8 +39,10 @@ def get_connection():
         user=get_setting("MYSQL_USER", "root"),
         password=get_setting("MYSQL_PASSWORD", ""),
         database=get_setting("MYSQL_DATABASE", "retailiq_db"),
+        ssl_ca=os.path.join(os.path.dirname(__file__), "ca.pem"),
         ssl_verify_cert=True,
         ssl_verify_identity=True,
+        connection_timeout=15,
     )
 
 
