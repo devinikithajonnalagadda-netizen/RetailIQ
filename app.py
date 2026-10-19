@@ -22,14 +22,23 @@ st.caption(
 )
 
 
+def get_setting(name, default=None):
+    try:
+        return st.secrets[name]
+    except (KeyError, FileNotFoundError):
+        return os.getenv(name, default)
+
+
 def get_connection():
     return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "localhost"),
-        port=int(os.getenv("MYSQL_PORT", "3306")),
-        user=os.getenv("MYSQL_USER", "root"),
-        password=os.getenv("MYSQL_PASSWORD", ""),
-        database=os.getenv("MYSQL_DATABASE", "retailiq_db"),
-        connection_timeout=10,
+        host=get_setting("MYSQL_HOST", "localhost"),
+        port=int(get_setting("MYSQL_PORT", "3306")),
+        user=get_setting("MYSQL_USER", "root"),
+        password=get_setting("MYSQL_PASSWORD", ""),
+        database=get_setting("MYSQL_DATABASE", "retailiq_db"),
+        ssl_verify_cert=True,
+        ssl_verify_identity=True,
+    )
     )
 
 
